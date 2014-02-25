@@ -33,7 +33,7 @@ class geppetto (
   }
 
   package { 'geppetto':
-    ensure   => installed,
+    ensure   => latest,
     source   => "https://downloads.puppetlabs.com/geppetto/4.x/geppetto-macosx.cocoa.${arch}-${version}.zip",
     provider => compressed_app,
   }
