@@ -1,20 +1,35 @@
 require 'spec_helper'
 
 describe 'geppetto' do
-  let(:facts) do 
-    {
-      :boxen_home => '/opt/boxen',
-      :architecture => 'x86_64', 
-    }
+  describe 'with 64bit os' do
+    let(:facts) do 
+      {
+        :boxen_home => '/opt/boxen',
+        :architecture => 'x86_64', 
+      }
+    end
+
+    it do
+      should contain_package('geppetto').with({
+        'ensure' => 'installed',
+        'source' => 'https://downloads.puppetlabs.com/geppetto/4.x/geppetto-macosx.cocoa.x86_64-4.1.0-R201402150632.zip',
+      })
+    end
   end
 
-  it do
-#    should include_class('geppetto')
+  describe 'with 32bit os' do
+    let(:facts) do 
+      {
+        :boxen_home => '/opt/boxen',
+        :architecture => 'x86', 
+      }
+    end
 
-    should contain_package('geppetto')
-    #.with(
-    #  :ensure => 'installed',
-    #  :source => 'https://downloads.puppetlabs.com/geppetto/4.x/geppetto-macosx.cocoa.x86_64-4.0.0-R201310140657.zip'
-    #)
+    it do
+      should contain_package('geppetto').with({
+        'ensure' => 'installed',
+        'source' => 'https://downloads.puppetlabs.com/geppetto/4.x/geppetto-macosx.cocoa.x86-4.1.0-R201402150632.zip',
+      })
+    end
   end
 end

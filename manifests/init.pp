@@ -25,7 +25,7 @@
 # Copyright 2013 Adam Crews, unless otherwise noted.
 #
 class geppetto (
-  $version = '4.0.0-R201310140657'
+  $version = '4.1.0-R201402150632'
 ) {
   $arch = $::architecture ? {
     'x86_64' => 'x86_64',
